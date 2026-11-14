@@ -1,0 +1,2 @@
+crop_name,crop_scientific_name,crop_category,kc_initial,kc_mid,kc_end,initial_stage_days,development_stage_days,mid_stage_days,late_stage_days,climate_reference,irrigation_condition,source_name,source_url,confidence
+Wheat,Triticum aestivum,Cereal,0.3,1.15,0.25,,,,,FAO-56 standard conditions,Not specified,FAO Irrigation and Drainage Paper 56,https://www.fao.org/4/X0490E/X0490E00.htm,Reference baseline

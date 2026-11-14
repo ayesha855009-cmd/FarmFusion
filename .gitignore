@@ -1,0 +1,11 @@
+
+
+
+
+# VS Code settings
+.vscode/
+venv/
+__pycache__/
+*.pyc
+.env
+.streamlit/secrets.toml

@@ -1,0 +1,5 @@
+crop,season,sowing_start,sowing_end,harvest_start,harvest_end
+Wheat,Rabi,10,12,4,5
+Rice,Kharif,6,7,10,11
+Cotton,Kharif,3,5,10,12
+Maize,Kharif,7,8,10,11

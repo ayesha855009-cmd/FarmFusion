@@ -1,0 +1,2 @@
+crop_name,root_depth_min_m,root_depth_max_m,depletion_fraction_at_5mm_day,source,confidence
+Wheat,1.0,1.5,0.55,FAO-56,Reference range - field conditions may differ
