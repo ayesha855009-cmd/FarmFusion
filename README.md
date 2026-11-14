@@ -229,14 +229,16 @@ FarmFusion/
 
 ## 👥 Team
 
-**Project:** FarmFusion
+## 👥 Team Members
 
-**Challenge:** Field Shift: Adapting Farms with NASA Data
+FarmFusion was developed collaboratively by a two-member team for the NASA challenge **Field Shift: Adapting Farms with NASA Data**.
 
-**Team Members:**
-- [Add team member name and contribution]
-- [Add team member name and contribution]
-- [Add team member name and contribution]
+- **[Ayesha Arshad ]**— Project Developer
+- [**Wania Rizwan**] — Project Developer
+
+Both team members contributed collaboratively to the research, development, data processing, simulation, and Streamlit application.
+
+**Together, we aim to turn NASA Earth observation data into meaningful agricultural insights.**
 
 ## 🌱 Future Development
 
