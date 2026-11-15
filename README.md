@@ -1,39 +1,41 @@
 # FarmFusion 🌾
 ### Field Shift: Adapting Farms with NASA Data
 
-**NASA Earth Observation-Based Agricultural Water Analysis and Decision Support Prototype**
+**An agricultural water-analysis research prototype**
 
 <p align="center">
-  <a href="https://farmfusion-nasa.streamlit.app/">🚀 Live FarmFusion Application</a>
+  <a href="https://farmfusion-nasa.streamlit.app/">🚀 Open the FarmFusion Dashboard</a>
 </p>
 
-## 🌍 About the Project
+## About FarmFusion
 
-FarmFusion is a data-driven agricultural research and decision-support prototype developed for the NASA challenge **"Field Shift: Adapting Farms with NASA Data."**
+FarmFusion is a student-developed research prototype created for the NASA Space Apps Challenge. It explores how climate data and soil-water conditions can help us understand agricultural water availability.
 
-The project explores how NASA Earth observation and climate data can support agricultural water analysis by combining climate conditions, soil wetness, crop-water demand, and simulated soil-water availability.
+Our first case study focuses on wheat cultivation in Phalia, Punjab, Pakistan.
 
-The initial case study focuses on wheat cultivation in **Phalia, Punjab, Pakistan**.
+The project uses daily climate data from NASA POWER to examine rainfall and weather conditions during the wheat-growing season. We use these data to calculate reference evapotranspiration and estimate crop-water demand. We then run a soil-water simulation to compare how different soil textures and starting moisture conditions affect the amount of water available in the soil.
 
-FarmFusion integrates NASA POWER datasets, reference evapotranspiration calculations, crop-water demand estimation, and a layered soil-water balance simulation to explore how different soil textures and initial moisture conditions influence water availability throughout the wheat growing season.
+The results are presented through an interactive Streamlit dashboard, where users can explore climate trends, water demand, soil-water storage, and different simulation scenarios.
 
-## 🚀 Live Application
+## Live Application
 
-**Explore FarmFusion:** https://farmfusion-nasa.streamlit.app/
+**Dashboard:** https://farmfusion-nasa.streamlit.app/
 
-The application is deployed using Streamlit Community Cloud.
+The application is hosted on Streamlit Community Cloud.
 
-## 🎯 Project Objectives
+## Project Objectives
 
-- Retrieve climate and soil-wetness data from NASA POWER.
-- Analyze temperature, rainfall, humidity, solar radiation, and soil wetness.
-- Estimate reference evapotranspiration (ET₀) using the FAO-56 Penman–Monteith method.
-- Estimate wheat crop evapotranspiration (ETc) using crop coefficients.
-- Simulate water movement and crop-water extraction across 150 soil sublayers.
-- Compare 36 combinations of soil texture and initial moisture conditions.
-- Visualize crop-water demand, rainfall, soil-water storage, and unmet potential water demand.
+FarmFusion was developed to:
 
-## 📍 Study Area
+- Analyze daily climate conditions during a wheat-growing season.
+- Use NASA POWER data in a local agricultural research case study.
+- Calculate reference evapotranspiration using the FAO-56 approach.
+- Estimate wheat crop-water demand using crop coefficients.
+- Simulate soil-water conditions across a layered soil profile.
+- Compare different soil textures and initial moisture assumptions.
+- Present the results through interactive charts and scenario comparisons.
+
+## Study Area
 
 | Parameter | Details |
 |---|---|
@@ -41,20 +43,20 @@ The application is deployed using Streamlit Community Cloud.
 | Latitude | 32.43° N |
 | Longitude | 73.58° E |
 | Crop | Wheat |
-| Study period | November 23, 2023 – April 20, 2024 |
+| Growing period studied | 23 November 2023 – 20 April 2024 |
 | Simulation duration | 150 days |
 
-## 🛰️ NASA Data Sources
+## NASA Data Source
 
 ### NASA POWER
 
-FarmFusion uses climate and soil-wetness variables from the NASA POWER data service.
+We used the NASA POWER data service to obtain daily climate data for the study area.
 
-Source: https://power.larc.nasa.gov/
+**Source:** https://power.larc.nasa.gov/
 
-Variables include:
+The project uses meteorological variables such as:
 
-| Parameter | Description |
+| Variable | Description |
 |---|---|
 | T2M | Mean air temperature |
 | T2M_MAX | Maximum air temperature |
@@ -64,28 +66,27 @@ Variables include:
 | RH2M | Relative humidity |
 | WS10M | Wind speed at 10 metres |
 | ALLSKY_SFC_SW_DWN | Surface shortwave downward radiation |
-| GWETTOP | Surface soil wetness |
-| GWETROOT | Root-zone soil wetness |
-| GWETPROF | Profile soil wetness |
 
-## ⚙️ Methodology
+These variables are used in the climate analysis and evapotranspiration calculations. The soil-water scenarios are modelled separately using assumed soil properties and initial moisture conditions; they should not be interpreted as direct NASA soil-moisture measurements.
 
-FarmFusion follows an integrated climate and soil-water analysis workflow.
+## How the Model Works
 
-1. **Data Collection:** Retrieve daily climate and soil-wetness data from NASA POWER.
-2. **Reference Evapotranspiration:** Calculate ET₀ using the FAO-56 Penman–Monteith method.
-3. **Crop-Water Demand:** Estimate wheat ETc using reference evapotranspiration and crop growth-stage coefficients.
-4. **Root Development:** Represent wheat root growth using an assumed linear root-depth function.
-5. **Layered Soil Simulation:** Divide the soil profile into five depth zones and 150 one-centimetre sublayers.
-6. **Scenario Analysis:** Simulate 12 soil textures under three hypothetical initial moisture conditions: Wet, Moderate, and Dry.
-7. **Numerical Validation:** Check water conservation and crop-water demand accounting across all 36 scenarios.
-8. **Visualization:** Compare rainfall, water demand, soil-water storage, and unmet potential demand.
+The project follows these main steps:
 
-## 📊 Simulation Results
+1. **Climate data collection:** Retrieve daily meteorological data from NASA POWER for the selected location and period.
+2. **Reference evapotranspiration:** Calculate reference evapotranspiration (ET₀) using the implemented FAO-56 method.
+3. **Crop-water demand:** Estimate wheat crop evapotranspiration (ETc) using ET₀ and crop coefficients.
+4. **Root development:** Represent root-depth development using an assumed linear growth function.
+5. **Soil profile:** Represent the soil profile using 150 one-centimetre sublayers, organised into five depth zones.
+6. **Water-balance simulation:** Simulate soil-water storage and crop-water extraction over the growing period.
+7. **Scenario comparison:** Run 36 combinations using 12 soil textures and three assumed initial moisture conditions: Wet, Moderate, and Dry.
+8. **Results:** Compare rainfall, potential crop-water demand, water extracted, final soil-water storage, and unmet potential demand.
 
-The layered soil-water model was tested across 12 soil textures and three initial moisture conditions, producing 36 scenarios over a 150-day wheat growing season.
+## Simulation Results
 
-### Example: Sandy Loam — Wet Scenario
+The model was run for 150 days across 36 scenarios.
+
+The following table shows one example of the reported simulation outputs:
 
 | Metric | Simulated Result |
 |---|---:|
@@ -97,102 +98,120 @@ The layered soil-water model was tested across 12 soil textures and three initia
 | Final soil-water storage | 44.82 mm |
 | Total drainage | 0.00 mm |
 
-### Numerical Validation
+These values are model outputs, not field measurements. The scenario label should be checked against the corresponding simulation output before assigning it to a particular soil texture or moisture condition.
 
-- 36 scenarios completed.
-- 5,400 daily simulation records generated.
-- Maximum water-balance error: 0.0 mm.
-- Maximum crop-water demand accounting error: 0.0 mm.
-- All scenarios passed numerical accounting checks.
+### Numerical Checks
 
-Simulated unmet potential demand ranged from 0.00 mm to approximately 201.35 mm across the scenarios.
+In the reported simulation run:
 
-These are outputs of a simplified simulation under assumed initial soil conditions and root-growth parameters, not direct field measurements.
+- 36 scenarios were completed.
+- 5,400 daily simulation records were generated.
+- Maximum reported water-balance error: 0.0 mm.
+- Maximum reported crop-water-demand accounting error: 0.0 mm.
+- All scenarios passed the implemented numerical accounting checks.
 
-## 📈 Visualizations
+Unmet potential water demand varied between scenarios, ranging from 0.00 mm to approximately 201.35 mm in the reported results.
 
-FarmFusion generates visual comparisons of:
+These checks assess numerical accounting within the model. They do not establish that the model accurately represents field conditions.
 
-- `unmet_demand_comparison.png` — Unmet potential crop-water demand across scenarios.
-- `water_demand_comparison.png` — Actual extracted water and unmet demand.
-- `daily_water_trends.png` — Daily soil-water storage and unmet demand.
-- `cumulative_water_comparison.png` — Cumulative rainfall and potential crop-water demand.
+## What the Dashboard Includes
 
-## 🧪 Model Limitations
+The Streamlit application is organised into several sections:
 
-FarmFusion is an experimental research prototype. Its current model has several limitations:
+- **Overview:** A summary of the study and its main results.
+- **Climate Insights:** Daily climate trends, including temperature, rainfall, and other meteorological variables.
+- **Soil Intelligence:** Comparisons of soil textures and initial moisture scenarios.
+- **Water Analysis:** Rainfall, estimated crop-water demand, water extraction, and final storage.
+- **Scenario Explorer:** Comparisons of the 36 simulation scenarios.
+- **Methodology:** An explanation of the data and modelling approach.
 
-1. Initial soil moisture conditions are hypothetical rather than measured.
-2. Soil available-water-capacity values have not been calibrated using local Phalia soil samples.
-3. Root growth is represented by a simplified linear function.
-4. Water extraction does not use a locally calibrated root-density or hydraulic uptake function.
-5. Rainfall infiltration is simulated without explicit runoff or infiltration-rate limitations.
-6. Unmet potential water demand is an accounting estimate, not a direct measurement of crop stress.
-7. The model has not yet been validated against field measurements.
+## Visualizations
 
-**Interpretation:** FarmFusion currently supports exploratory agricultural scenario analysis. Its results should not be interpreted as precise irrigation recommendations or crop-yield predictions.
+The project generates the following charts:
 
-Further development requires local soil measurements, field observations, improved soil-water physics, and independent model validation.
+| File | Purpose |
+|---|---|
+| `unmet_demand_comparison.png` | Compares unmet potential water demand across scenarios |
+| `water_demand_comparison.png` | Compares actual extracted water with unmet demand |
+| `daily_water_trends.png` | Shows daily soil-water trends |
+| `cumulative_water_comparison.png` | Compares cumulative rainfall and potential crop-water demand |
 
-## 🛠️ Technology Stack
+## Model Limitations
 
-- Python
-- Streamlit
-- Pandas
-- NumPy
-- Matplotlib
-- NASA POWER API
-- FAO-56 Penman–Monteith methodology
-- Layered soil-water balance simulation
+FarmFusion is an exploratory research prototype. Some parts of the model are simplified and require further testing.
 
-## 💻 Installation and Local Execution
+- Initial soil-moisture conditions are hypothetical.
+- Soil-water properties are based on reference assumptions, not laboratory measurements from local Phalia farms.
+- Root development is represented using a simplified linear function.
+- Water extraction does not yet use a locally calibrated root-density or hydraulic uptake model.
+- Runoff and infiltration-rate limitations are not fully represented.
+- Unmet potential water demand is a model-based estimate. It is not a direct measurement of crop stress.
+- The model has not yet been validated against field observations.
+
+For these reasons, FarmFusion should be used to explore possible scenarios, not to provide precise irrigation recommendations or predict crop yields.
+
+## Technology Used
+
+The project was developed using:
+
+- **Python** – Main programming language.
+- **NumPy** – Numerical calculations and array operations.
+- **Pandas** – Data processing and analysis.
+- **Matplotlib** – Charts and visualizations.
+- **Streamlit** – Interactive dashboard.
+- **NASA POWER** – Daily meteorological data.
+- **FAO-56** – Reference evapotranspiration methodology.
+
+## Running the Project Locally
 
 ### Requirements
 
 - Python 3.11 or later
 - pip
-- Internet connection for API-based data retrieval
+- Internet connection for NASA POWER data retrieval
 
-### 1. Clone the Repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/ayesha855009-cmd/FarmFusion.git
 cd FarmFusion
 ```
 
-### 2. Create a Virtual Environment
+### 2. Create a virtual environment
 
 ```bash
 python -m venv venv
 ```
 
-### 3. Activate the Environment
+### 3. Activate the environment
 
-Windows PowerShell:
+For Windows PowerShell:
 
 ```powershell
 .\venv\Scripts\Activate.ps1
 ```
 
-### 4. Install Dependencies
+### 4. Install dependencies
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-### 5. Run FarmFusion
+### 5. Run the dashboard
 
 ```bash
 streamlit run app.py
 ```
 
-The application will open in your browser at:
+The application should open at:
 
-`http://localhost:8501`
+```text
+http://localhost:8501
+```
 
-## 🔬 Optional: Backend Simulation Pipeline
+## Reproducing the Simulation
 
-To regenerate the backend calculations and simulation outputs, execute the following scripts from the project root:
+The following commands can be used to run the backend scripts, provided the required input files are available at the paths configured in the scripts.
 
 ```bash
 python src/calculate_eto.py
@@ -200,7 +219,7 @@ python src/calculate_annual_etc.py
 python src/run_layered_water_balance.py
 ```
 
-Generate visualizations:
+To generate the charts:
 
 ```bash
 python src/plot_scenario_comparison.py
@@ -209,11 +228,9 @@ python src/plot_daily_water_trends.py
 python src/plot_cumulative_water.py
 ```
 
-Generated charts and processed datasets are stored in `data/processed/`.
+Processed datasets and generated charts are stored in `data/processed/`.
 
-The required input datasets must be available at the paths configured in the respective scripts.
-
-## 📁 Project Structure
+## Project Structure
 
 ```text
 FarmFusion/
@@ -227,29 +244,33 @@ FarmFusion/
 └── .gitignore
 ```
 
-## 👥 Team
+## Team
 
-## 👥 Team Members
+FarmFusion was developed by a two-member team for the NASA Space Apps Challenge.
 
-FarmFusion was developed collaboratively by a two-member team for the NASA challenge **Field Shift: Adapting Farms with NASA Data**.
+- **Ayesha Arshad** – Project Developer
+- **Wania Rizwan** – Project Developer
 
-- **[Ayesha Arshad ]**— Project Developer
-- [**Wania Rizwan**] — Project Developer
+Both team members contributed to the research, data processing, modelling, and dashboard development.
 
-Both team members contributed collaboratively to the research, development, data processing, simulation, and Streamlit application.
+## Use of AI Tools
 
-**Together, we aim to turn NASA Earth observation data into meaningful agricultural insights.**
+ChatGPT was used during project development for brainstorming, research assistance, coding support, debugging, and editing project documentation and presentation content.
 
-## 🌱 Future Development
+The team reviewed and tested the project implementation and remains responsible for the final code, analysis, and reported results.
 
-- Expand agricultural analysis beyond the initial Phalia case study.
-- Integrate additional regional soil and agricultural datasets.
-- Improve soil-water simulation using field-calibrated parameters.
-- Incorporate more crop types and growing seasons.
-- Develop more advanced agricultural decision-support capabilities.
+## Future Work
+
+There are several areas we would like to improve:
+
+- Collect soil samples and use measured local soil properties.
+- Compare model outputs with observations from actual agricultural fields.
+- Improve the representation of infiltration, runoff, drainage, and root-water uptake.
+- Extend the analysis to other crops and growing seasons.
+- Explore additional agricultural locations and climate conditions.
 
 ---
 
-**FarmFusion — Turning NASA Earth observations into agricultural insights.**
+**FarmFusion — Exploring agricultural water availability with NASA climate data.**
 
-*Developed as an experimental research prototype for the NASA challenge: Field Shift: Adapting Farms with NASA Data.*
+*An independent research prototype developed for the NASA Space Apps Challenge.*
